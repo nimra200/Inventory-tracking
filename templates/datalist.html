@@ -1,0 +1,31 @@
+<html>
+    <script src="static/js/script.js"></script>
+    <head>
+        <title>Inventory</title>
+    </head>
+    <body>
+        <h3>View / Update / Delete Inventory Items</h3>
+        <style> table, th, td { border: 1px solid black;} </style>
+        <table>
+            <tr>
+                <th>Part Name</th>
+                <th>ID</th>
+                <th>Quantity</th>
+            </tr>
+            
+            {% for part in inventory_items %}
+                <tr>
+                    <td class="inventory">{{part.name}}</td>
+                    <td class="inventory">{{part.part_id}}</td>
+                    <td class="inventory">{{part.quantity}}</td>
+                    <td><a href="/data/{{part.part_id}}/update">Update</a> </td>
+                    <td><a href="/data/{{part.part_id}}/delete">Delete</a></td>
+                </tr>
+            {% endfor%}   
+        </table>
+        
+        <button onclick="exportTableToCSV('inventory.csv')">Download CSV</button><br>
+        <a href="/">Return to home page</a>
+    </body>
+   
+</html>
